@@ -6,9 +6,11 @@ defmodule Aoc do
   @doc """
   AOC.
 
-  # Function that reads input files with lists of numeric data. Returns a list of strings
+  Function that reads input files with lists of numeric data.
 
-  ## Example
+  Returns: `{:ok, [String.t()]}`
+
+  ## Examples
 
       iex> Aoc.read_lines("test/lines.txt")
       {:ok, ["789793", "8080", "25344"]}
@@ -19,9 +21,11 @@ defmodule Aoc do
   @doc """
   AOC.
 
-  # Function that reads input files with character maps. Returns a list of character lists.
+  Function that reads input files with character maps.
 
-  ## Example
+  Returns: `{:ok, charlist()}`
+
+  ## Examples
 
       iex> Aoc.read_map("test/map.txt")
       {:ok,
@@ -42,9 +46,11 @@ defmodule Aoc do
   @doc """
   AOC.
 
-  # Function that, given a character map in the form of a list of lists and some coordinates in said map, returns the corresponding character.
+  Function that, given a list of character lists and some coordinates (pair of indices), finds the requested character.
 
-  ## Example
+  Returns: `char()`
+
+  ## Examples
 
       iex> {:ok, map} = Aoc.read_map("test/map.txt")
       {:ok, [[".", ".", "."], ["#", ".", "."], [".", "#", "#"]]}
@@ -55,8 +61,21 @@ defmodule Aoc do
   def at_map(map, x, y), do: map |> Enum.at(y) |> Enum.at(x)
 
   def fmap({:ok, x}, f), do: {:ok, f.(x)}
+
+  @doc """
+  AOC.
+
+  ## Helper function that applies the given function to the successful value of a tuple. In case of a failed value, the function is not applied and the given tuple is returned without transformation.
+
+  """
   def fmap(whatever, _), do: whatever
 
+  @doc """
+  AOC.
+
+  ## Helper function that maps a given function to a list of inputs, outputting to standard output the result of applying the given function to each of the inputs in the list.
+
+  """
   def runner(inputs, f), do: Enum.map(inputs, fn i -> IO.inspect(f.(i)) end)
 end
 
