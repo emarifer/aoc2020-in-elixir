@@ -17,6 +17,7 @@ defmodule Aoc do
 
   """
   def read_lines(path), do: File.read(path) |> fmap(&String.split/1)
+  def read_lines(path, pattern), do: File.read(path) |> fmap(&String.split(&1, pattern))
 
   @doc """
   AOC.
