@@ -132,7 +132,7 @@ end
 
 # sample |> Aoc2020.Problem08.problem2() |> IO.inspect()
 
-# SOBRE LA FUNCIÓN `reduce`:
+# IMPORTANTE!! SOBRE LA FUNCIÓN `reduce`:
 # `reduce` toma como valores iniciales el mapa de instrucciones, p.ej:
 # %{
 #   0 => {:nop, 0},
@@ -151,18 +151,17 @@ end
 # resultaría de cambiar un `:nop` por un `:jmp` o viceversa. En el primer caso,
 # `{:nop, n} => ptr + n`, y en segundo caso `{:jmp, n} => ptr + 1`.
 # Si `changed` es true y el resultado de `reduce` en la segunda
-# llamada recursiva sigue siendo false dado que el flag `changed` está a true
+# llamada recursiva sigue siendo false, dado que el flag `changed` está a true
 # no se volverá a intentar una nueva llamada recursiva. Realmente `changed`
 # sólo se pone a true una única vez, es decir, que aseguramos que la
 # sustitución de `:nop` a `:jmp` o viceversa sólo se hará una vez.
-# El pattern matching hará que si se ha vaciado el mapa de
-# instrucciones sin machear con `:fin`, macheará necesariamente con nil
-# (lo que significa que con esas intrucciones se obtiene un bucle infinito),
-# devolviendo false por lo que en los casos de `{:nop, n}` y `{:jmp, n}`
-# se intentará el cambio de comportamiento anteriormente dicho.
 # Dado que `Map.pop` va quitando la instrucción apuntada por el puntero
-# se evita que la función `reduce` entre en un bucle infinito.
-# Simplemente, si se alcanza la instrucción `:fin` se devolverá el valor
+# se evita que la función `reduce` vuelva a llamar
+# a la misma instrucción por segunda vez y entre en un bucle infinito.
+# Esto hará que estemos en el case `{nil, _instr}` y `reduce` devuelva false.
+# La consecuencia de ello será que en los casos de `{:nop, n}` y `{:jmp, n}`
+# se intentará el cambio de comportamiento anteriormente dicho.
+# Finalmente, si se alcanza la instrucción `:fin` se devolverá el valor
 # del acumulador, lo cual es `truthy`,
 # [ver: https://hexdocs.pm/elixir/Kernel.html#module-truthy-and-falsy-values]
 # por lo que en `cortocircuito` || no se volverá a llamar el `unless`
