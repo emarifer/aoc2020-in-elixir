@@ -77,7 +77,7 @@ set = [{5, sample}, {25, lines}]
 # Part #1
 set |> Aoc.runner(&Aoc2020.Problem09.run1/1)
 
-# Part #1
+# Part #2
 set |> Aoc.runner(&Aoc2020.Problem09.run2/1)
 
 # Part #1
