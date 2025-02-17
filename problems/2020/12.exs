@@ -90,7 +90,7 @@ sample =
 # Part #1
 [sample, lines] |> Aoc.runner(&Aoc2020.Problem12.part1/1)
 
-# Part #1
+# Part #2
 [sample, lines] |> Aoc.runner(&Aoc2020.Problem12.part2/1)
 
 # Part #1
