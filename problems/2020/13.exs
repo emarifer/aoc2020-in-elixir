@@ -130,11 +130,11 @@ sample =
 # Another example: 17,x,13,19
 # Stream.unfold(0, fn t -> {t, t + 1} end) |> Stream.filter(fn t -> rem(t + 0, 17) == 0 end) |> Enum.at(0)
 
-# {0, lcm(1,17)=7}
+# {0, lcm(1,17)=17}
 
 # Stream.unfold(0, fn t -> {t, t + 17} end) |> Stream.filter(fn t -> rem(t + 2, 13) == 0 end) |> Enum.at(0)
 
-# {102, lcm(17,13)=91}
+# {102, lcm(17,13)=221}
 
 # Stream.unfold(102, fn t -> {t, t + 221} end) |> Stream.filter(fn t -> rem(t + 3, 19) == 0 end) |> Enum.at(0)
 
