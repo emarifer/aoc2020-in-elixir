@@ -3,6 +3,13 @@ defmodule Aoc do
   Library functions for performing AOC2020 exercises.
   """
 
+  def combinatory([x]), do: [[x], []]
+
+  def combinatory([x | xs]) do
+    comb = combinatory(xs)
+    comb ++ Enum.map(comb, fn c -> [x | c] end)
+  end
+
   @doc """
   AOC.
 
@@ -77,6 +84,7 @@ defmodule Aoc do
   ## Helper function that maps a given function to a list of inputs, outputting to standard output the result of applying the given function to each of the inputs in the list.
 
   """
+  def runner(inputs, f, label), do: Enum.map(inputs, fn i -> IO.inspect(f.(i), label: label) end)
   def runner(inputs, f), do: Enum.map(inputs, fn i -> IO.inspect(f.(i)) end)
 end
 

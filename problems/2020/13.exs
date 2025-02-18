@@ -139,7 +139,7 @@ sample =
 # Stream.unfold(102, fn t -> {t, t + 221} end) |> Stream.filter(fn t -> rem(t + 3, 19) == 0 end) |> Enum.at(0)
 
 # {3417, lcm(13,19)=247}
-# 3417 => 7
+# 3417 => 17
 # 3418 => x
 # 3419 => 13
 # 3420 => 19
