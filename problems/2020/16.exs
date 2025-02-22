@@ -188,5 +188,35 @@ Aoc2020.Problem16.part2("inputs/16.input")
 # The result is a map with the keys (field indexes)
 # and a list with the rules that satisfy each of them.
 
+# defp reduce_candidates(candidates) do
+#   new =
+#     Enum.reduce(candidates, candidates, fn
+#     (When we find a rule that is unique to a field (column),
+#     we remove it from the rest of the columns: "The order is
+#     consistent between all tickets", so each field only needs
+#     to match one rule [single-item list].) ↓↓↓↓
+#       {_index, [rule]}, acc -> remove_from_candidates(acc, rule)
+#       _, acc -> acc
+#     end)
+#    (When what comes in (`candidates`) is equal to what comes out (`new`)
+#    we end the recursion.)
+#   if new == candidates, do: candidates, else: reduce_candidates(new)
+# end
+# ====>
+# %{
+# (field) => (rule/s)
+#   0 => [{"row", 0..5, 8..19}],
+#   1 => [{"row", 0..5, 8..19}, {"class", 0..1, 4..19}],
+#   2 => [{"seat", 0..13, 16..19}, {"row", 0..5, 8..19}, {"class", 0..1, 4..19}]
+# }
+# false
+# false
+# true
+# part2/puzzle: %{
+#   0 => [{"row", 0..5, 8..19}],
+#   1 => [{"class", 0..1, 4..19}],
+#   2 => [{"seat", 0..13, 16..19}]
+# }
+
 # https://www.christianblavier.com/
 # https://github.com/cblavier/advent/blob/master/lib/2020/day16/part2.ex
