@@ -101,7 +101,7 @@ Aoc2020.Problem18.parse_puzzle("inputs/18.input")
 # part1/sample: 26457
 # part1/puzzle: 12918250417632
 
-# Part #1
+# Part #2
 # part2/sample: 694173
 # part2/puzzle: 171259538712010
 
